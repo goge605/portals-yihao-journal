@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引 · 壹号娱乐知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+            background: #f4f6f9;
+            color: #1e2a41;
+            line-height: 1.6;
+        }
+        .wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* 深色头图区 */
+        .hero {
+            background: linear-gradient(145deg, #0f1b2d 0%, #1b2a44 100%);
+            color: #eaf0f9;
+            padding: 60px 0 56px;
+            border-radius: 0 0 32px 32px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .hero .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+        .hero-text {
+            max-width: 640px;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 18px;
+            font-weight: 300;
+        }
+        .hero .tagline {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            border-left: 3px solid #5f8ec9;
+            padding-left: 18px;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
+            padding: 10px 18px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            display: inline-block;
+            margin-top: 12px;
+        }
+        /* 主内容区 — 浅色 */
+        .main-content {
+            background: #ffffff;
+            margin-top: -24px;
+            border-radius: 32px 32px 0 0;
+            padding: 48px 0 60px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.02);
+        }
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e2a41;
+        }
+        .section-header span {
+            background: #d4e0f0;
+            padding: 0 12px 0 6px;
+            border-radius: 0 20px 20px 0;
+            display: inline-block;
+        }
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin: 36px 0 44px;
+        }
+        .card {
+            background: #f9fafc;
+            border-radius: 24px;
+            padding: 28px 20px;
+            transition: box-shadow 0.2s, transform 0.15s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #edf0f5;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0,20,50,0.08);
+            border-color: #b8cde0;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #31445e;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+        }
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 4px;
+            color: #5f8ec9;
+            font-weight: bold;
+        }
+        .accent-link {
+            color: #1f509e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #9bb7da;
+            transition: border-color 0.15s;
+        }
+        .accent-link:hover {
+            border-bottom: 2px solid #1f509e;
+            color: #0e387a;
+        }
+        .info-strip {
+            background: #eef3f9;
+            border-radius: 20px;
+            padding: 28px 28px;
+            margin: 28px 0 36px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+        }
+        .info-strip .item {
+            flex: 1 1 180px;
+        }
+        .info-strip .item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #4d627c;
+        }
+        .info-strip .item .value {
+            font-size: 1.15rem;
+            font-weight: 450;
+            margin-top: 4px;
+        }
+        .faq-mini {
+            background: #ffffff;
+            border: 1px solid #dfe6ef;
+            border-radius: 24px;
+            padding: 24px 28px;
+            margin: 32px 0 24px;
+        }
+        .faq-mini details {
+            margin: 10px 0;
+            border-bottom: 1px solid #e9eef4;
+            padding-bottom: 8px;
+        }
+        .faq-mini details:last-child {
+            border-bottom: none;
+        }
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #1a2b44;
+            padding: 6px 0;
+        }
+        .faq-mini summary::marker {
+            color: #5f8ec9;
+        }
+        .faq-mini p {
+            margin: 8px 0 4px 20px;
+            color: #2d405c;
+            font-size: 0.95rem;
+        }
+        .notice-box {
+            background: #fcf8e8;
+            border-left: 5px solid #bb9b5e;
+            padding: 18px 24px;
+            border-radius: 16px;
+            margin: 30px 0 20px;
+            font-size: 0.95rem;
+        }
+        .notice-box strong {
+            color: #7a623a;
+        }
+        .footer-note {
+            margin-top: 48px;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #6e7d94;
+            border-top: 1px solid #dce2ec;
+            text-align: center;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .wrapper { flex-direction: column; align-items: flex-start; }
+            .hero-badge { margin-top: 16px; }
+            .info-strip { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="wrapper">
+            <div class="hero-text">
+                <h1>信息索引 · 资料入口</h1>
+                <p class="sub">关于平台档案、内容归档与常见参考</p>
+                <div class="tagline">基于整理习惯构建的轻量知识库，记录与平台相关的结构信息。</div>
+                <div class="hero-badge">📁 当前索引：综合模块</div>
+            </div>
+            <div style="margin-top: 10px; font-size:0.9rem; opacity:0.6;">
+                版本 · 2025
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="wrapper">
+
+            <!-- 目录式说明区 -->
+            <h2 class="section-header"><span>📂 内容模块</span></h2>
+            <div class="grid-3col">
+                <div class="card">
+                    <h3>📋 基础档案</h3>
+                    <ul>
+                        <li>平台定位与背景</li>
+                        <li>服务边界说明</li>
+                        <li>使用环境参考</li>
+                        <li>更新记录摘要</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🔎 索引结构</h3>
+                    <ul>
+                        <li>分类标签体系</li>
+                        <li>内容类型分布</li>
+                        <li>关联资料节点</li>
+                        <li>外部引用列表</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>📌 常用参考</h3>
+                    <ul>
+                        <li>术语与释义</li>
+                        <li>操作注意事项</li>
+                        <li>常见问题摘要</li>
+                        <li>联系方式通道</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 介绍 + 自然链接 -->
+            <p style="margin: 8px 0 16px; font-size: 1.05rem;">
+                本页作为信息整理入口，主要围绕 <a href="https://portals-yihao.com" class="accent-link">壹号娱乐</a> 相关内容进行归类与索引。
+                不代替官方说明，仅从资料梳理角度提供结构化的参考框架，方便快速定位信息片段。
+            </p>
+
+            <!-- 相关信息区 -->
+            <div class="info-strip">
+                <div class="item">
+                    <div class="label">归档方向</div>
+                    <div class="value">结构 · 说明 · 提示</div>
+                </div>
+                <div class="item">
+                    <div class="label">内容粒度</div>
+                    <div class="value">模块化 · 条目式</div>
+                </div>
+                <div class="item">
+                    <div class="label">更新频率</div>
+                    <div class="value">按需修订</div>
+                </div>
+                <div class="item">
+                    <div class="label">关联索引</div>
+                    <div class="value">内部 + 部分公开</div>
+                </div>
+            </div>
+
+            <!-- 提示区 -->
+            <div class="notice-box">
+                <strong>📎 查阅提示</strong> —— 本索引不存储原始文件，仅提供分类指引。部分条目可能指向外部链接或存档页，请根据自身需要筛选。所有信息仅供参考，不构成建议。
+            </div>
+
+            <!-- FAQ 摘要区 -->
+            <h2 class="section-header" style="margin-top: 44px;"><span>❓ 常见条目摘要</span></h2>
+            <div class="faq-mini">
+                <details>
+                    <summary>这个知识库主要收录什么？</summary>
+                    <p>主要收录与平台相关的结构性描述、分类方式、功能边界说明及术语整理。不包含用户数据或实时运营信息。</p>
+                </details>
+                <details>
+                    <summary>索引内的链接都指向哪里？</summary>
+                    <p>部分指向 <a href="https://portals-yihao.com" class="accent-link">壹号娱乐</a> 相关公开页面，其余指向内部编写的参考文档或归档片段。</p>
+                </details>
+                <details>
+                    <summary>信息多久更新一次？</summary>
+                    <p>根据平台变动或资料补充不定期修订。当前版本标记于页头。</p>
+                </details>
+                <details>
+                    <summary>可以复制或分享内容吗？</summary>
+                    <p>索引本身为公开整理，引用请注明出处。不建议直接复制用于商业用途。</p>
+                </details>
+            </div>
+
+            <!-- 补充说明区：克制叙述 -->
+            <p style="margin: 28px 0 12px; color: #324a66; font-size: 0.98rem; background: #f4f7fb; padding: 16px 22px; border-radius: 20px;">
+                编写这个页面并不是为了提供终极答案，而是希望为需要系统了解 <a href="https://portals-yihao.com" class="accent-link">壹号娱乐</a> 相关信息的用户提供一个比较干净的起点。
+                目录卡片、常见摘要、提示框共同构成一个轻量的索引环境。你可以根据自己的节奏翻阅，而不必被推送或弹窗干扰。
+            </p>
+
+            <div class="footer-note">
+                <span>资料索引入口 · 内容基于公开与整理信息构成 · 不涉及非公开数据</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

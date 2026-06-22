@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>竞彩网 · 体育赛事决策参考</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f7fc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1f2a3a;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #0b7e6b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #085a4d;
+    }
+
+    /* 容器 */
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ---- Hero 区 ---- */
+    .hero {
+      background: linear-gradient(145deg, #e3f2ed 0%, #c8e6df 100%);
+      border-radius: 0 0 40px 40px;
+      padding: 48px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      right: -10px;
+      width: 200px;
+      height: 200px;
+      background: rgba(11, 126, 107, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #093b33;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 640px;
+      color: #2a4d46;
+      margin-bottom: 28px;
+    }
+
+    .hero a {
+      display: inline-block;
+      background: #0b7e6b;
+      color: #fff;
+      font-weight: 500;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-size: 1rem;
+      box-shadow: 0 6px 14px rgba(11, 126, 107, 0.25);
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .hero a:hover {
+      background: #096354;
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    /* ---- 优势区：网格卡片 ---- */
+    .section {
+      padding: 48px 0 28px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #093b33;
+      margin-bottom: 28px;
+      border-left: 5px solid #0b7e6b;
+      padding-left: 16px;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 20px 26px;
+      box-shadow: 0 8px 18px rgba(0, 30, 20, 0.04);
+      border: 1px solid #deede8;
+      transition: box-shadow 0.25s, border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: #b3d5cc;
+      box-shadow: 0 12px 24px rgba(11, 126, 107, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0f4d41;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card h3::before {
+      content: "●";
+      color: #0b7e6b;
+      font-size: 1.0rem;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #334d47;
+    }
+
+    /* ---- 说明区：宽段落 ---- */
+    .explain-block {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 32px 28px;
+      margin: 36px 0 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #d9e9e3;
+    }
+
+    .explain-block h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0b5a4b;
+      margin-bottom: 20px;
+    }
+
+    .explain-block p {
+      margin-bottom: 18px;
+      color: #2d4741;
+    }
+
+    .explain-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .explain-block a {
+      font-weight: 500;
+      border-bottom: 1px dotted #0b7e6b;
+    }
+
+    /* ---- FAQ 摘要 ---- */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0 30px;
+    }
+
+    @media (max-width: 600px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-item {
+      background: #f5fcf9;
+      padding: 18px 20px 20px;
+      border-radius: 18px;
+      border-left: 4px solid #0b7e6b;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #0f4d41;
+      margin-bottom: 6px;
+      font-size: 1.0rem;
+    }
+
+    .faq-item p {
+      color: #3a5a52;
+      font-size: 0.9rem;
+    }
+
+    /* ---- 底部链接区 ---- */
+    .footer-links {
+      border-top: 1px solid #cfe3dc;
+      padding: 32px 0 40px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .footer-links p {
+      font-size: 0.95rem;
+      color: #3f6259;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #0b7e6b;
+      font-weight: 500;
+    }
+
+    .footer-links .small-note {
+      display: block;
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: #7c9a92;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .explain-block {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero 区域 -->
+  <header class="hero">
+    <div class="container">
+      <h1>从赛事信息到决策参考</h1>
+      <p>围绕体育比赛的数据与动态，为爱好者提供更清晰的观察视角。无论是联赛走向、近期状态还是对阵记录，都能在这里找到平实、可参考的内容。</p>
+      <a href="https://sportterymobile.com">竞彩网</a>
+    </div>
+  </header>
+
+  <!-- 优势区：网格卡片 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">多维信息聚合</h2>
+      <div class="grid-cards">
+        <div class="card">
+          <h3>实时数据流</h3>
+          <p>覆盖主流足球、篮球联赛，比分与基础统计更新及时，方便追踪比赛脉络。</p>
+        </div>
+        <div class="card">
+          <h3>历史交锋</h3>
+          <p>提供过往对战记录及近期走势，辅助用户建立更完整的赛前图景。</p>
+        </div>
+        <div class="card">
+          <h3>球队动态</h3>
+          <p>伤停、首发、赛前发布会要点摘录，减少信息遗漏，保持内容克制。</p>
+        </div>
+        <div class="card">
+          <h3>多端适配</h3>
+          <p>移动设备优先设计，随时查阅重点数据，界面轻盈不累赘。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区：主题展开 -->
+  <div class="container">
+    <div class="explain-block">
+      <h2>围绕竞彩主题的理性内容</h2>
+      <p>很多爱好者希望从赛事本身的信息出发，形成自己的判断，而非盲目追随外界观点。<a href="https://sportterymobile.com">竞彩网</a> 正尝试扮演这样一个角色：整理联赛数据、列出可供参考的维度，但不做过度解读。</p>
+      <p>例如一场英超对决，你可以看到主客场的胜率分布、近五场进球趋势、核心球员出场情况。这些元素本身是中性的，但组合在一起，能为讨论提供更踏实的落脚点。平台不设诱导性口号，只是把信息呈现得更有层次。</p>
+      <p>如果你也习惯先看数据再谈观点，或许会觉得这里的氛围比较对味。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <section class="container">
+    <h2 class="section-title" style="margin-bottom: 16px;">常见关注点</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <strong>信息更新频率？</strong>
+        <p>主要赛事数据在比赛日保持滚动更新，非赛日则侧重前瞻与回顾类内容。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否需要注册？</strong>
+        <p>浏览基础数据与球队页面无需注册；部分深度功能可能提供可选账户服务。</p>
+      </div>
+      <div class="faq-item">
+        <strong>数据来源可靠吗？</strong>
+        <p>平台信息源于公开赛事统计与授权数据接口，并标注参考时间，方便交叉验证。</p>
+      </div>
+      <div class="faq-item">
+        <strong>移动端体验如何？</strong>
+        <p>页面采用响应式设计，卡片与表格在手机屏幕上有良好的可读性与操作区域。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部链接 -->
+  <footer class="footer-links">
+    <div class="container">
+      <p>如果你希望从更完整的视角了解比赛，可以时常逛逛 <a href="https://sportterymobile.com">竞彩网</a>，看看最近有哪些值得留意的对阵与数据趋势。</p>
+      <span class="small-note">内容仅供参考，不构成任何形式的建议。请依据个人实际情况理性决策。</span>
+    </div>
+  </footer>
+
+</body>
+</html>
